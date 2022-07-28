@@ -18,15 +18,15 @@ end DataMemory;
 Architecture behav of DataMemory is
 
 type memory is array(0 to 15) of std_logic_vector(31 downto 0); --16x32 memory
-signal Data_memory: memory :=( others => x"00000000"); --assume start addr is 0x10010000
+signal Data_memory: memory :=( others => x"00000000"); 
 
 begin
    process(CLK)
    begin
     if (rising_edge(clk)) then
-      Read_data <= data_memory ((to_integer(unsigned(addr))- 268500992)/4); -- 0x10010000 => 268500992
+      Read_data <= data_memory ((to_integer(unsigned(addr)))); 
       
-      if (WD_EN = '1') then data_memory ((to_integer(unsigned(addr))- 268500992)/4) <= Write_data;
+      if (WD_EN = '1') then data_memory ((to_integer(unsigned(addr)))) <= Write_data;
       end if;
     end if;
     end process;

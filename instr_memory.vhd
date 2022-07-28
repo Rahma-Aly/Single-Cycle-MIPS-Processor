@@ -32,6 +32,6 @@ signal Instr_memory: memory:= (  x"01285024", --0x0040 0000: and
                               );
 
 begin
-  Instr <= Instr_memory((to_integer(unsigned(Addr))- 4194304)/4);
+  Instr <= Instr_memory((to_integer(unsigned(Addr))));
 
 end architecture dataflow;

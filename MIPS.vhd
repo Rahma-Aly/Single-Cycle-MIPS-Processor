@@ -13,7 +13,7 @@ architecture behav of MIPS is
 
   signal SE_IN: std_logic_vector(15 downto 0):= x"0000"; -- signExtend input
 
-  signal SE_OUT, SRC_B,SRC_A, ALUResult, ReadData, PC_new, PC_Current, MUX5_OUT: std_logic_vector (31 downto 0); -- signExtend output and MUX output, ALU_Result
+  signal SE_OUT, SRC_B,SRC_A, ALUResult, ReadData, PC_new, PC_Current, MUX5_OUT: std_logic_vector (31 downto 0); 
 
   signal ALU_SRC, REG_DST, MemToReg, jump, branch, PCSrc, RegWrite, MWrite, zero: std_logic; -- MUX SELECT and CU Outputs
 

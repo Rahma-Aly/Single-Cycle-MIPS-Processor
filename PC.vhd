@@ -12,9 +12,11 @@ end PC;
 
 architecture behav of PC is
 begin
- process (clk)
+process (clk,reset)
    begin
-      if (rising_edge(clk)) then PC_Current <= PC_new;
+      if (reset = '1') then PC_Current <= (others =>'0');
+      elsif (rising_edge(clk)) 
+        then PC_Current <= PC_new;
       end if;
    end process;
 end architecture behav;

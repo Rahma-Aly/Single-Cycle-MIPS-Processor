@@ -4,7 +4,8 @@ use ieee.numeric_std.all;
 
 entity MIPS is
 port(
-CLK: in std_logic
+  Reset: in std_logic;
+  CLK: in std_logic
 );
 end MIPS;
 
@@ -36,6 +37,7 @@ architecture behav of MIPS is
     port map(
        PC_new => PC_new , --Output of mux having jump as control signal 
        clk => CLK,
+       reset => reset,
        PC_Current => PC_Current); -- input to instruction memory
 
    -- Control Unit
@@ -118,6 +120,7 @@ architecture behav of MIPS is
         Write_Reg => WREG,
         RegWrite => RegWrite,
         clk => clk,
+        reset => reset,
         RD1 => SRC_A, 
         RD2 => RD2);
      
@@ -136,6 +139,7 @@ architecture behav of MIPS is
          Addr => ALUResult,
          Write_Data => RD2,
          WD_EN => MWrite,
+         reset => reset,
          Read_Data => ReadData,
          CLK => clk);
 

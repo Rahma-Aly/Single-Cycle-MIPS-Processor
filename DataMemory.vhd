@@ -7,7 +7,7 @@ entity DataMemory is
 Port(
       Addr: in std_logic_vector(31 downto 0); -- address
       Write_Data: in std_logic_vector(31 downto 0); -- data to store
-
+      reset: in std_logic;
       WD_EN: in std_logic; --read and write data enable
       Read_Data: out std_logic_vector(31 downto 0);
       
@@ -21,11 +21,12 @@ type memory is array(0 to 15) of std_logic_vector(31 downto 0); --16x32 memory
 signal Data_memory: memory ; 
 
 begin
-   process(CLK)
+   process(CLK,reset)
    begin
-    if (rising_edge(clk) and WD_EN = '1') then
+    if reset = '1' then data_memory <= (others => (others=>'0'));
+    elsif (rising_edge(clk) and WD_EN = '1') then 
       data_memory ((to_integer(unsigned(addr)))) <= Write_data;
-    end if;
+      end if;
     end process;
      Read_data <= data_memory ((to_integer(unsigned(addr)))); 
 end architecture behav;

@@ -20,7 +20,9 @@ end RegFile;
 
 architecture Behav of RegFile is
 type reg_type is array (0 to 31) of std_logic_vector(31 downto 0);
-signal register_array: reg_type;
+signal register_array: reg_type := ( x"00000000", x"11111111", x"22222222", x"33333333", x"44444444", x"55555555", x"66666666", x"77777777",
+                                     x"88888888", x"99999999", x"AAAAAAAA", x"BBBBBBBB", x"CCCCCCCC", x"DDDDDDDD", x"EEEEEEEE", x"FFFFFFFF", 
+                                     others => x"00000000"); 
 begin
   process(CLK, reset)
    begin
